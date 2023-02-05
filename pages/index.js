@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { client } from "../libs/client";
 import styles from "@/styles/Home.module.scss";
+import Layout from "@/components/Layout";
+
 
 //SSG
 export const getStaticProps = async () => {
@@ -15,7 +17,11 @@ export const getStaticProps = async () => {
 
 export default function Home({ blog }) {
   return (
-    <div className={styles.container}>
+
+    <div className="container flex flex-col justify-center items-center">
+      <Layout></Layout>
+
+      <h1 className="text-5xl font-bold">Hello world!</h1>
       {blog.map((blog) => (
         <li key={blog.id}>
           <Link href={`blog/${blog.id}`}>
@@ -23,6 +29,7 @@ export default function Home({ blog }) {
           </Link>
         </li>
       ))}
+
     </div>
   );
 }
